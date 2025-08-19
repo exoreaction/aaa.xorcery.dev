@@ -1,0 +1,4249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporal Analytics Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Contact Section */
+        .conclusion {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(45, 27, 105, 0.8) 50%, rgba(0, 0, 0, 0.95) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .conclusion::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .conclusion-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .contact-intro {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .contact-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            min-width: 200px;
+        }
+
+        .contact-btn.primary {
+            background: #00d4ff;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .contact-btn.secondary {
+            background: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+        }
+
+        .contact-btn.secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: #00d4ff;
+            min-width: 80px;
+        }
+
+        .contact-value {
+            opacity: 0.9;
+        }
+
+        .hashtags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .hashtag {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .hashtag:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive for conclusion */
+        @media (max-width: 768px) {
+            .problem-intro h2,
+            .problem-statement h3,
+            .solution-statement h3 {
+                font-size: 2rem;
+            }
+            
+            .contact-section h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .hashtags {
+                justify-content: center;
+            }
+            
+            .target-audience {
+                display: block;
+                margin: 0 auto;
+            }
+        }
+
+        /* Business Impact Section */
+        .business-impact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(45, 27, 105, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
+            position: relative;
+        }
+
+        .impact-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 4rem;
+            opacity: 0.9;
+        }
+
+        .impact-cases {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .impact-case {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            padding: 3rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            transition: all 0.4s ease;
+        }
+
+        .impact-case:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .case-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .case-icon {
+            font-size: 3rem;
+            margin-right: 1rem;
+        }
+
+        .case-industry {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-right: 2rem;
+        }
+
+        .case-company {
+            background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .before-after {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: start;
+        }
+
+        .before-section,
+        .after-section {
+            padding: 2rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .before-section {
+            background: linear-gradient(135deg, rgba(255, 69, 0, 0.1) 0%, rgba(139, 0, 0, 0.05) 100%);
+            border-color: rgba(255, 69, 0, 0.2);
+        }
+
+        .after-section {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 255, 127, 0.05) 100%);
+            border-color: rgba(0, 212, 255, 0.2);
+        }
+
+        .before-section h4,
+        .after-section h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .pain-points,
+        .benefits-points {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .pain-point,
+        .benefit-point {
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .pain-point {
+            background: rgba(255, 69, 0, 0.1);
+            border: 1px solid rgba(255, 69, 0, 0.2);
+            color: rgba(255, 160, 122, 0.9);
+        }
+
+        .benefit-point {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: rgba(0, 212, 255, 0.9);
+        }
+
+        .transformation-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .arrow-content {
+            text-align: center;
+            background: #00d4ff;
+            padding: 1rem 1.5rem;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .arrow-visual {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+            animation: arrowPulse 2s infinite ease-in-out;
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% { transform: translateX(0); opacity: 0.7; }
+            50% { transform: translateX(5px); opacity: 1; }
+        }
+
+        .impact-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .metric {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .metric:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.3;
+        }
+
+        .case-visualization {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            min-height: 800px;
+        }
+
+        /* Logistics Visualization */
+        .logistics-network {
+            position: relative;
+            height: 200px;
+            margin-bottom: 2rem;
+        }
+
+        .depot-node,
+        .event-zone,
+        .delivery-zone {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(255, 0, 255, 0.1) 100%);
+            border: 2px solid rgba(0, 212, 255, 0.4);
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            animation: logisticsNodeGlow 4s infinite ease-in-out;
+            min-width: 120px;
+        }
+
+        .event-zone {
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.2) 0%, rgba(255, 69, 0, 0.1) 100%);
+            border-color: rgba(255, 165, 0, 0.4);
+        }
+
+        .delivery-zone {
+            background: linear-gradient(135deg, rgba(0, 255, 127, 0.2) 0%, rgba(0, 212, 255, 0.1) 100%);
+            border-color: rgba(0, 255, 127, 0.4);
+        }
+
+        .depot-label,
+        .event-label,
+        .zone-label {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .vehicle-count,
+        .disruption-indicator,
+        .zone-status {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .disruption-indicator {
+            color: #ffa500;
+        }
+
+        .zone-status {
+            color: #00ff7f;
+        }
+
+        @keyframes logisticsNodeGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(0, 212, 255, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.6); }
+        }
+
+        .route-connections {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .route-connections path {
+            animation: routeFlow 4s infinite ease-in-out;
+        }
+
+        .route-connections path:nth-child(1) { animation-delay: 0s; }
+        .route-connections path:nth-child(2) { animation-delay: 1s; }
+        .route-connections path:nth-child(3) { animation-delay: 2s; }
+
+        @keyframes routeFlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        .event-timeline {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .timeline-event {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            min-width: 140px;
+        }
+
+        .timeline-event.active {
+            border-color: rgba(0, 212, 255, 0.5);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(255, 0, 255, 0.1) 100%);
+        }
+
+        .timeline-event .event-time {
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-event .event-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Aviation Visualization */
+        .flight-network {
+            position: relative;
+            height: 150px;
+            margin-bottom: 2rem;
+        }
+
+        .airport-node {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.2) 0%, rgba(255, 69, 0, 0.1) 100%);
+            border: 2px solid rgba(255, 165, 0, 0.4);
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+            animation: airportPulse 4s infinite ease-in-out;
+        }
+
+        .airport-code {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #ffa500;
+            margin-bottom: 0.3rem;
+        }
+
+        .crew-count {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        @keyframes airportPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .flight-path {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.6) 50%, transparent 100%);
+            animation: flightPath 3s infinite ease-in-out;
+        }
+
+        .flight-path:nth-of-type(1) {
+            top: 30%;
+            left: 20%;
+            width: 60%;
+            transform: rotate(15deg);
+        }
+
+        .flight-path.delayed {
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 165, 0, 0.6) 50%, transparent 100%);
+            top: 50%;
+            left: 15%;
+            width: 50%;
+            transform: rotate(-10deg);
+            animation-delay: 1s;
+        }
+
+        .flight-path.optimized {
+            background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 127, 0.6) 50%, transparent 100%);
+            top: 70%;
+            left: 25%;
+            width: 55%;
+            transform: rotate(5deg);
+            animation-delay: 2s;
+        }
+
+        @keyframes flightPath {
+            0%, 100% { opacity: 0.3; transform: scaleX(0.5); }
+            50% { opacity: 1; transform: scaleX(1); }
+        }
+
+        .crew-status {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: statusPulse 2s infinite ease-in-out;
+        }
+
+        .status-item.available .status-dot {
+            background: #00ff7f;
+        }
+
+        .status-item.in-flight .status-dot {
+            background: #00d4ff;
+        }
+
+        .status-item.resting .status-dot {
+            background: #ffa500;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Impact Summary */
+        .impact-summary {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(45, 27, 105, 0.3) 100%);
+            border-radius: 25px;
+            padding: 3rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .impact-summary h3 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #00d4ff;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .summary-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .summary-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .summary-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .summary-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .summary-item p {
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        /* Responsive for business impact */
+        @media (max-width: 768px) {
+            .before-after {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .transformation-arrow {
+                order: 2;
+                margin: 1rem 0;
+            }
+            
+            .after-section {
+                order: 3;
+            }
+            
+            .case-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            
+            .impact-metrics {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .event-timeline,
+            .crew-status {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .depot-node,
+            .event-zone,
+            .delivery-zone {
+                position: relative !important;
+                display: inline-block;
+                margin: 0.5rem;
+                min-width: auto;
+            }
+            
+            .route-connections {
+                display: none;
+            }
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #2d1b69 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            background: #00d4ff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Animated Network Background */
+        .network-bg {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .node {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(0, 212, 255, 0.6);
+            border-radius: 50%;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        .connection {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(0, 212, 255, 0.3) 50%, transparent 100%);
+            transform-origin: left center;
+            animation: flow 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.5); opacity: 1; }
+        }
+
+        @keyframes flow {
+            0% { opacity: 0; transform: scaleX(0); }
+            50% { opacity: 1; transform: scaleX(1); }
+            100% { opacity: 0; transform: scaleX(0); }
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #00d4ff;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        /* Industries Section */
+        .industries {
+            padding: 100px 0;
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .industry-card {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 0, 255, 0.1) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .industry-card:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(255, 0, 255, 0.2) 100%);
+        }
+
+        .industry-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .industry-card p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Visualization Demo */
+        .demo {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .demo-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #00d4ff;
+        }
+
+        .demo-visual {
+            position: relative;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Temporal Timeline */
+        .temporal-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .timeline-connector {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.3) 0%, rgba(138, 43, 226, 0.8) 50%, rgba(255, 0, 255, 0.3) 100%);
+            z-index: 1;
+        }
+
+        .timeline-phase {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .phase-marker {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin: 0 auto 8px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-phase.past .phase-marker {
+            background: rgba(0, 212, 255, 0.6);
+            border-color: #00d4ff;
+        }
+
+        .timeline-phase.present .phase-marker {
+            background: rgba(138, 43, 226, 0.8);
+            border-color: #8a2be2;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+        }
+
+        .timeline-phase.future .phase-marker {
+            background: rgba(255, 0, 255, 0.6);
+            border-color: #ff00ff;
+        }
+
+        .phase-label {
+            font-weight: 600;
+            font-size: 1rem;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .phase-desc {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.2;
+        }
+
+        /* Network Visualization */
+        .network-visualization {
+            position: relative;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .network-node {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid;
+            animation: nodeGlow 4s infinite ease-in-out;
+            transform: translate(-50%, -50%);
+        }
+
+        .network-node:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+            z-index: 10;
+        }
+
+        .network-node.small {
+            width: 40px;
+            height: 40px;
+            font-size: 0.7rem;
+        }
+
+        .network-node.medium {
+            width: 60px;
+            height: 60px;
+            font-size: 0.8rem;
+        }
+
+        .network-node.large {
+            width: 80px;
+            height: 80px;
+            font-size: 0.9rem;
+        }
+
+        /* Node Types */
+        .network-node.executive {
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.8) 0%, rgba(75, 0, 130, 0.6) 100%);
+            border-color: rgba(138, 43, 226, 0.8);
+            color: white;
+        }
+
+        .network-node.tech {
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.8) 0%, rgba(0, 150, 200, 0.6) 100%);
+            border-color: rgba(0, 212, 255, 0.8);
+            color: white;
+        }
+
+        .network-node.data {
+            background: radial-gradient(circle, rgba(0, 255, 127, 0.8) 0%, rgba(0, 200, 100, 0.6) 100%);
+            border-color: rgba(0, 255, 127, 0.8);
+            color: white;
+        }
+
+        .network-node.security {
+            background: radial-gradient(circle, rgba(255, 165, 0, 0.8) 0%, rgba(255, 140, 0, 0.6) 100%);
+            border-color: rgba(255, 165, 0, 0.8);
+            color: white;
+        }
+
+        .network-node.cloud {
+            background: radial-gradient(circle, rgba(255, 20, 147, 0.8) 0%, rgba(199, 21, 133, 0.6) 100%);
+            border-color: rgba(255, 20, 147, 0.8);
+            color: white;
+        }
+
+        .node-label {
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.1;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes nodeGlow {
+            0%, 100% { 
+                box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+            }
+        }
+
+        /* Network Connections */
+        .network-connections {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .connection {
+            opacity: 0.6;
+            animation: connectionFlow 3s infinite ease-in-out;
+        }
+
+        .connection.strong {
+            stroke: rgba(0, 212, 255, 0.8);
+            stroke-width: 3;
+        }
+
+        .connection.medium {
+            stroke: rgba(138, 43, 226, 0.7);
+            stroke-width: 2;
+        }
+
+        .connection.weak {
+            stroke: rgba(255, 0, 255, 0.5);
+            stroke-width: 1;
+            stroke-dasharray: 4,4;
+        }
+
+        @keyframes connectionFlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Network Pulses */
+        .network-pulse {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.6);
+            transform: translate(-50%, -50%);
+            animation: networkPulse 3s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        @keyframes networkPulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(0.5);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
+        }
+
+        .timeline {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+
+        .timeline-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff 0%, #ff00ff 100%);
+            border-radius: 2px;
+            width: 0%;
+            animation: timelineProgress 4s infinite ease-in-out;
+        }
+
+        @keyframes timelineProgress {
+            0%, 100% { width: 0%; }
+            50% { width: 100%; }
+        }
+
+        .data-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: dataPoint 2s infinite ease-in-out;
+        }
+
+        .data-point:nth-child(1) { top: 20%; left: 15%; animation-delay: 0s; }
+        .data-point:nth-child(2) { top: 40%; left: 30%; animation-delay: 0.3s; }
+        .data-point:nth-child(3) { top: 60%; left: 45%; animation-delay: 0.6s; }
+        .data-point:nth-child(4) { top: 30%; left: 60%; animation-delay: 0.9s; }
+        .data-point:nth-child(5) { top: 50%; left: 75%; animation-delay: 1.2s; }
+
+        @keyframes dataPoint {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(2); opacity: 1; }
+        }
+
+        /* Engine Architecture */
+        .engine {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(45, 27, 105, 0.3) 100%);
+        }
+
+        .engine-flow {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .engine-component {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .engine-component:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2);
+        }
+
+        .alchemy {
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.1) 0%, rgba(255, 69, 0, 0.1) 100%);
+        }
+
+        .aurora {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(138, 43, 226, 0.1) 100%);
+        }
+
+        .astral {
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.1) 0%, rgba(255, 20, 147, 0.1) 100%);
+        }
+
+        .component-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .component-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+        }
+
+        .component-header h3 {
+            font-size: 1.8rem;
+            color: #00d4ff;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .component-subtitle {
+            font-size: 1rem;
+            color: #ff00ff;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .component-features {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-flow-indicator {
+            position: absolute;
+            right: -1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+        }
+
+        .flow-arrow {
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff 0%, #ff00ff 100%);
+            position: relative;
+            animation: flowPulse 2s infinite ease-in-out;
+        }
+
+        .flow-arrow::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: -3px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid #ff00ff;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+        }
+
+        @keyframes flowPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Engine Demo */
+        .engine-demo {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .demo-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+
+        .tab-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .tab-button.active,
+        .tab-button:hover {
+            background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+            border-color: transparent;
+        }
+
+        .demo-content-area {
+            min-height: 300px;
+            position: relative;
+        }
+
+        .engine-demo-view {
+            display: none;
+            height: 100%;
+        }
+
+        .engine-demo-view.active {
+            display: block;
+        }
+
+        /* Data Pipeline */
+        .data-pipeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            height: 250px;
+            align-items: center;
+        }
+
+        .pipeline-stage {
+            text-align: center;
+            position: relative;
+        }
+
+        .pipeline-stage h4 {
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        .data-source {
+            background: rgba(255, 165, 0, 0.2);
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 165, 0, 0.3);
+        }
+
+        .processing-indicator {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(0, 212, 255, 0.3);
+            border-top: 3px solid #00d4ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .event-stream {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .event {
+            height: 8px;
+            background: linear-gradient(90deg, transparent 0%, #00d4ff 50%, transparent 100%);
+            border-radius: 4px;
+            animation: eventFlow 2s infinite ease-in-out;
+        }
+
+        .event:nth-child(2) { animation-delay: 0.3s; }
+        .event:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes eventFlow {
+            0%, 100% { transform: scaleX(0.3); opacity: 0.5; }
+            50% { transform: scaleX(1); opacity: 1; }
+        }
+
+        .mini-chart {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            align-items: end;
+            height: 60px;
+        }
+
+        .chart-bar {
+            width: 12px;
+            background: linear-gradient(180deg, #ff00ff 0%, #00d4ff 100%);
+            border-radius: 2px;
+            animation: chartGrow 2s infinite ease-in-out;
+        }
+
+        .chart-bar:nth-child(1) { height: 30px; animation-delay: 0s; }
+        .chart-bar:nth-child(2) { height: 50px; animation-delay: 0.2s; }
+        .chart-bar:nth-child(3) { height: 40px; animation-delay: 0.4s; }
+
+        @keyframes chartGrow {
+            0%, 100% { transform: scaleY(0.8); }
+            50% { transform: scaleY(1.2); }
+        }
+
+        /* Temporal Visualization */
+        .temporal-visualization {
+            position: relative;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .time-axis {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .time-axis::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.3) 0%, #00d4ff 50%, rgba(255,255,255,0.3) 100%);
+        }
+
+        .time-marker {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            z-index: 2;
+            position: relative;
+        }
+
+        .time-marker.active {
+            background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+            border-color: transparent;
+        }
+
+        .temporal-events {
+            position: relative;
+            height: 100px;
+        }
+
+        .temporal-event {
+            position: absolute;
+            background: rgba(0, 212, 255, 0.3);
+            padding: 0.8rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 212, 255, 0.5);
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+        }
+
+        .temporal-event.active {
+            background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+            border-color: transparent;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Relationship Graph */
+        .relationship-graph {
+            position: relative;
+            height: 250px;
+        }
+
+        .graph-node {
+            position: absolute;
+            background: rgba(255, 0, 255, 0.2);
+            padding: 1rem;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 0, 255, 0.5);
+            text-align: center;
+            font-size: 0.9rem;
+            transform: translate(-50%, -50%);
+            animation: nodeGlow 3s infinite ease-in-out;
+        }
+
+        @keyframes nodeGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 255, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(255, 0, 255, 0.6); }
+        }
+
+        .relationship-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .demo-container { grid-template-columns: 1fr; }
+            .network-bg { width: 100%; opacity: 0.3; }
+            .engine-flow { grid-template-columns: 1fr; }
+            .data-pipeline { grid-template-columns: repeat(2, 1fr); }
+            .data-flow-indicator { display: none; }
+            
+            /* Network visualization mobile adjustments */
+            .demo-visual { height: 400px; }
+            .temporal-timeline { 
+                flex-direction: column; 
+                gap: 1rem; 
+                padding: 15px;
+            }
+            .timeline-connector { display: none; }
+            .phase-desc { display: none; }
+            
+            .network-node.small { width: 30px; height: 30px; font-size: 0.6rem; }
+            .network-node.medium { width: 45px; height: 45px; font-size: 0.7rem; }
+            .network-node.large { width: 60px; height: 60px; font-size: 0.8rem; }
+            
+            .network-connections { opacity: 0.3; }
+            .connection { stroke-width: 1; }
+        }
+
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Problem & Solution Section */
+        .problem-solution {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(45, 27, 105, 0.8) 50%, rgba(0, 0, 0, 0.95) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-solution::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .problem-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .problem-intro h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .intro-subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            color: #00d4ff;
+        }
+
+        .problem-statement {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .problem-statement h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff6b6b;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .problem-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .problem-item {
+            background: rgba(255, 107, 107, 0.1);
+            border: 2px solid rgba(255, 107, 107, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .problem-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 107, 107, 0.4);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.2);
+        }
+
+        .problem-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-item p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .problem-item strong {
+            color: #ff6b6b;
+        }
+
+        .solution-statement {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .solution-statement h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .solution-intro {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            color: #00d4ff;
+            font-weight: 600;
+        }
+
+        .solution-capabilities {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .capability {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .capability:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .capability-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .capability h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #00d4ff;
+        }
+
+        .capability p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .value-box {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(45, 27, 105, 0.4) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 3rem;
+            text-align: center;
+            backdrop-filter: blur(15px);
+        }
+
+        .value-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .value-box p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .target-audience {
+            background: #00d4ff;
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            font-size: 1.1rem;
+            color: white;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .value-proposition {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Market Positioning Section */
+        .market-positioning {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(26, 26, 62, 0.8) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .market-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            margin-bottom: 4rem;
+            opacity: 0.9;
+        }
+
+        .positioning-split {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 3rem;
+            align-items: stretch;
+            margin-bottom: 4rem;
+        }
+
+        .positioning-side {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            padding: 3rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(15px);
+            position: relative;
+        }
+
+        .volume-side {
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.1) 0%, rgba(255, 69, 0, 0.05) 100%);
+        }
+
+        .volume-side:hover {
+            border-color: rgba(255, 165, 0, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .volume-badge {
+            background: rgba(255, 165, 0, 0.2);
+            color: rgba(255, 165, 0, 0.9);
+            border: 1px solid rgba(255, 165, 0, 0.3);
+        }
+
+        .insight-side {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 0, 255, 0.05) 100%);
+        }
+
+        .insight-side:hover {
+            border-color: rgba(0, 212, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2);
+        }
+
+        .positioning-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .positioning-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .positioning-header h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .market-share {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .our-platform {
+            background: #00d4ff;
+            color: white;
+            border: none;
+        }
+
+        .our-platform span {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .positioning-description {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .solution-examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .solution-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 165, 0, 0.9);
+        }
+
+        .insight-tag {
+            color: rgba(0, 212, 255, 0.9);
+            background: rgba(0, 212, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .volume-visualization,
+        .insight-visualization {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            height: 120px;
+        }
+
+        .data-blocks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-right: 2rem;
+        }
+
+        .data-block {
+            width: 40px;
+            height: 30px;
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.6) 0%, rgba(255, 69, 0, 0.4) 100%);
+            border-radius: 5px;
+            animation: dataBlockPulse 2s infinite ease-in-out;
+        }
+
+        .data-block:nth-child(1) { animation-delay: 0s; }
+        .data-block:nth-child(2) { animation-delay: 0.2s; }
+        .data-block:nth-child(3) { animation-delay: 0.4s; }
+        .data-block:nth-child(4) { animation-delay: 0.6s; }
+        .data-block:nth-child(5) { animation-delay: 0.8s; }
+        .data-block:nth-child(6) { animation-delay: 1s; }
+
+        @keyframes dataBlockPulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .volume-arrow {
+            color: rgba(255, 165, 0, 0.8);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .insight-network-new {
+            position: relative;
+            width: 120px;
+            height: 90px;
+            margin-right: 2rem;
+        }
+
+        .insight-node {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #00d4ff;
+            border-radius: 50%;
+            animation: insightNodePulse 3s infinite ease-in-out;
+        }
+
+        .insight-node:nth-child(1) {
+            top: 10px;
+            left: 10px;
+            animation-delay: 0s;
+        }
+
+        .insight-node:nth-child(2) {
+            top: 10px;
+            right: 10px;
+            animation-delay: 1s;
+        }
+
+        .insight-node:nth-child(3) {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 2s;
+        }
+
+        @keyframes insightNodePulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+            }
+            50% { 
+                transform: scale(1.3);
+                box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+            }
+        }
+
+        .insight-connections {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .insight-connections path {
+            animation: connectionFlow 3s infinite ease-in-out;
+        }
+
+        @keyframes connectionFlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .insight-arrow {
+            color: rgba(0, 212, 255, 0.8);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .vs-divider {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .vs-circle {
+            background: #00d4ff;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 2;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .divider-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.5) 50%, transparent 100%);
+            z-index: 1;
+        }
+
+        .challenge-box,
+        .opportunity-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        .opportunity-box {
+            border-color: rgba(0, 212, 255, 0.3);
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .focus-badge {
+            background: #00d4ff;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .volume-focus {
+            background: linear-gradient(135deg, rgba(255, 165, 0, 0.9) 0%, rgba(255, 69, 0, 0.9) 100%);
+            color: white;
+        }
+
+        .insight-focus {
+            background: #00d4ff;
+            color: white;
+        }
+
+        .market-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* Responsive adjustments for market positioning */
+        @media (max-width: 768px) {
+            .positioning-split {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .vs-divider {
+                order: 2;
+                flex-direction: row;
+                justify-content: center;
+                padding: 1rem 0;
+            }
+            
+            .vs-circle {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+            
+            .divider-line {
+                display: none;
+            }
+            
+            .insight-side {
+                order: 3;
+            }
+            
+            .market-stats {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Unlock the Power of Time & Relationships</h1>
+                <p>Our temporal analytics platform transforms complex data relationships over time into actionable insights. Integrate seamlessly with your existing systems and discover patterns that drive business success.</p>
+                <button class="cta-button" onclick="scrollToEngine()">See The Engine</button>
+            </div>
+            <div class="network-bg" id="networkBg"></div>
+        </div>
+    </section>
+
+    <!-- Problem & Solution Statement -->
+    <section class="problem-solution">
+        <div class="container">
+            <div class="problem-intro">
+                <h2>Most systems only show you the current state.</h2>
+                <p class="intro-subtitle">But business is about evolution, relationships, and time.</p>
+            </div>
+
+            <div class="problem-statement">
+                <h3>That's a Problem.</h3>
+                <div class="problem-points">
+                    <div class="problem-item">
+                        <div class="problem-icon">🔄</div>
+                        <p><strong>They overwrite history.</strong><br>Critical context disappears forever.</p>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-icon">🌫️</div>
+                        <p><strong>They obscure how things got the way they are.</strong><br>Root causes remain hidden.</p>
+                    </div>
+                    <div class="problem-item">
+                        <div class="problem-icon">❓</div>
+                        <p><strong>They leave you guessing about the impact of future changes.</strong><br>Decisions become dangerous gambles.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="solution-statement">
+                <h3>Xorcery AAA Solves This</h3>
+                <p class="solution-intro">By making your data time-aware.</p>
+                
+                <div class="solution-capabilities">
+                    <div class="capability">
+                        <div class="capability-icon">🔍</div>
+                        <h4>Reconstruct and audit the past</h4>
+                        <p>With full data lineage</p>
+                    </div>
+                    <div class="capability">
+                        <div class="capability-icon">📈</div>
+                        <h4>Understand how things evolved</h4>
+                        <p>Not just what they are</p>
+                    </div>
+                    <div class="capability">
+                        <div class="capability-icon">🔮</div>
+                        <h4>Explore future scenarios</h4>
+                        <p>Before committing to changes</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="value-proposition">
+                <div class="value-box">
+                    <h3>This isn't a black box or a buzzword.</h3>
+                    <p>It's a pragmatic solution for complex data architectures.</p>
+                    <div class="target-audience">
+                        Built for <strong>developers and architects</strong> who need <strong>clarity over time</strong>, not just snapshots.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Positioning Section -->
+    <section class="market-positioning">
+        <div class="container">
+            <h2 class="section-title">The Market Reality</h2>
+            <p class="market-subtitle">Data volume is solved. Temporal relationship intelligence is not.</p>
+            
+            <div class="positioning-split">
+                <!-- Data Volume Market Side -->
+                <div class="positioning-side volume-side">
+                    <div class="positioning-header">
+                        <div class="positioning-icon">📦</div>
+                        <h3>Data Volume Market</h3>
+                        <div class="market-share volume-badge">Mature & Competitive</div>
+                    </div>
+                    
+                    <div class="positioning-description">
+                        <p>Hundreds of well-established solutions compete to store, move, and process large amounts of data efficiently.</p>
+                    </div>
+                    
+                    <div class="solution-examples">
+                        <div class="solution-tag">Snowflake</div>
+                        <div class="solution-tag">Databricks</div>
+                        <div class="solution-tag">AWS Redshift</div>
+                        <div class="solution-tag">Google BigQuery</div>
+                        <div class="solution-tag">Apache Spark</div>
+                        <div class="solution-tag">Elasticsearch</div>
+                        <div class="solution-tag">MongoDB</div>
+                        <div class="solution-tag">Kafka</div>
+                    </div>
+                    
+                    <div class="volume-visualization">
+                        <div class="data-blocks-grid">
+                            <div class="data-block"></div>
+                            <div class="data-block"></div>
+                            <div class="data-block"></div>
+                            <div class="data-block"></div>
+                            <div class="data-block"></div>
+                            <div class="data-block"></div>
+                        </div>
+                        <div class="volume-arrow">
+                            <span>Scale & Speed →</span>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-box">
+                        <div class="focus-badge volume-focus">Volume & Performance</div>
+                        <strong>What they solve:</strong> Getting data in, storing it efficiently, and querying it fast
+                    </div>
+                </div>
+                
+                <!-- VS Divider -->
+                <div class="vs-divider">
+                    <div class="vs-circle">VS</div>
+                    <div class="divider-line"></div>
+                </div>
+                
+                <!-- Temporal Intelligence Side -->
+                <div class="positioning-side insight-side">
+                    <div class="positioning-header">
+                        <div class="positioning-icon">🧠</div>
+                        <h3>Temporal Intelligence</h3>
+                        <div class="market-share our-platform">Virtually Unserved<br><span>Xorcery AAA</span></div>
+                    </div>
+                    
+                    <div class="positioning-description">
+                        <p>Almost no solutions preserve complete history, enable time-travel queries, or understand how relationships evolve over time.</p>
+                    </div>
+                    
+                    <div class="solution-examples">
+                        <div class="solution-tag insight-tag">Event Sourcing</div>
+                        <div class="solution-tag insight-tag">Time-Travel Queries</div>
+                        <div class="solution-tag insight-tag">Relationship Evolution</div>
+                        <div class="solution-tag insight-tag">Temporal Patterns</div>
+                        <div class="solution-tag insight-tag">Complete Audit Trails</div>
+                        <div class="solution-tag insight-tag">Historical Simulation</div>
+                    </div>
+                    
+                    <div class="insight-visualization">
+                        <div class="insight-network-new">
+                            <div class="insight-node"></div>
+                            <div class="insight-node"></div>
+                            <div class="insight-node"></div>
+                            <svg class="insight-connections">
+                                <path d="M 30 30 Q 60 15 90 30" stroke="rgba(0,212,255,0.8)" stroke-width="2" fill="none"/>
+                                <path d="M 30 30 Q 45 60 60 90" stroke="rgba(255,0,255,0.8)" stroke-width="2" fill="none"/>
+                                <path d="M 90 30 Q 75 60 60 90" stroke="rgba(0,212,255,0.8)" stroke-width="2" fill="none"/>
+                            </svg>
+                        </div>
+                        <div class="insight-arrow">
+                            <span>← Time & Context</span>
+                        </div>
+                    </div>
+                    
+                    <div class="opportunity-box">
+                        <div class="focus-badge insight-focus">Time & Relationships</div>
+                        <strong>What we solve:</strong> Understanding how your data relationships evolved and will evolve
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Impact Section -->
+    <section class="business-impact">
+        <div class="container">
+            <h2 class="section-title">Real Business Transformation</h2>
+            <p class="impact-subtitle">See how instant access to temporal insights revolutionizes decision-making</p>
+            
+            <div class="impact-cases">
+                <!-- Logistics Case Study -->
+                <div class="impact-case">
+                    <div class="case-header">
+                        <div class="case-icon">🚚</div>
+                        <div class="case-industry">Logistics & Delivery</div>
+                        <div class="case-company">Parcel delivery service - Major City Operations</div>
+                    </div>
+                    
+                    <div class="before-after">
+                        <div class="before-section">
+                            <h4>❌ Before: Recurring Disruption Chaos</h4>
+                            <div class="pain-points">
+                                <div class="pain-point">🎪 Major city events (concerts, festivals, football matches) cause unpredictable delays</div>
+                                <div class="pain-point">🔥 Constant firefighting and repeated manual interventions</div>
+                                <div class="pain-point">📊 Systems only show current state, lose history of what worked</div>
+                                <div class="pain-point">⏰ No visibility into past disruption patterns around stadiums</div>
+                                <div class="pain-point">❓ Can't simulate route adjustments before events</div>
+                            </div>
+                        </div>
+                        
+                        <div class="transformation-arrow">
+                            <div class="arrow-content">
+                                <span>Temporal Analytics</span>
+                                <div class="arrow-visual">→</div>
+                            </div>
+                        </div>
+                        
+                        <div class="after-section">
+                            <h4>✅ After: Predictive Route Intelligence</h4>
+                            <div class="benefits-points">
+                                <div class="benefit-point">📊 Complete history of past disruption patterns and solutions</div>
+                                <div class="benefit-point">🔁 Recognition of recurring events and their route impact</div>
+                                <div class="benefit-point">🧠 Simulation of route adjustments before event rollout</div>
+                                <div class="benefit-point">✅ Consistent planning reduces manual interventions</div>
+                                <div class="benefit-point">🎯 Proactive depot and SLA management</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    
+                    <div class="impact-metrics">
+                        <div class="metric">
+                            <div class="metric-number">76%</div>
+                            <div class="metric-label">Fewer Missed Deliveries</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-number">68%</div>
+                            <div class="metric-label">Reduction in Manual Interventions</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-number">€3.2M</div>
+                            <div class="metric-label">Annual Savings</div>
+                        </div>
+                    </div>
+                    
+                    <div class="case-visualization">
+                        <iframe 
+                            srcdoc='<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictive Route Intelligence Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+            font-family: "Arial", sans-serif;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .truck-icon {
+            font-size: 2rem;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #06b6d4, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-text p {
+            margin: 5px 0 0 0;
+            color: #cbd5e1;
+            font-size: 1rem;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            height: 600px;
+        }
+
+        .panel {
+            background: rgba(30, 27, 75, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .panel-icon {
+            font-size: 1.5rem;
+        }
+
+        .panel-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #06b6d4;
+        }
+
+        .panel-content {
+            flex: 1;
+            position: relative;
+        }
+
+        /* Left Panel - Historical Patterns */
+        .heatmap {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        .venue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .venue-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .venue-name {
+            font-weight: bold;
+            color: #cbd5e1;
+        }
+
+        .disruption-level {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .high { background: #ef4444; }
+        .medium { background: #f59e0b; }
+        .low { background: #10b981; }
+
+        /* Center Panel - Analytics Engine */
+        .analytics-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+        }
+
+        .flow-step {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            position: relative;
+            text-align: center;
+        }
+
+        .flow-step.active {
+            background: rgba(6, 182, 212, 0.2);
+            border-color: #06b6d4;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .step-title {
+            font-weight: bold;
+            color: #06b6d4;
+            margin-bottom: 5px;
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+
+        .processing-indicator {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #06b6d4;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .flow-arrow {
+            text-align: center;
+            color: #06b6d4;
+            font-size: 1.2rem;
+        }
+
+        /* Right Panel - Predictions */
+        .predictions {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .prediction-item {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .prediction-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .event-name {
+            font-weight: bold;
+            color: #10b981;
+        }
+
+        .event-date {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+
+        .route-adjustment {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 5px 0;
+        }
+
+        .adjustment-icon {
+            color: #f59e0b;
+        }
+
+        .adjustment-text {
+            font-size: 0.9rem;
+        }
+
+        .impact-metric {
+            background: rgba(16, 185, 129, 0.2);
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #10b981;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        /* Metrics Section */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .metric-card {
+            background: rgba(30, 27, 75, 0.4);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #06b6d4, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .metric-label {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="truck-icon">🚛</div>
+        <div class="header-text">
+            <h1>Logistics & Delivery</h1>
+            <p>Parcel delivery service - Major City Operations</p>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <!-- Left Panel: Historical Disruption Patterns -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-icon">📊</div>
+                <div class="panel-title">Historical Disruption Patterns</div>
+            </div>
+            <div class="panel-content">
+                <svg class="heatmap" id="heatmap"></svg>
+                
+                <div class="venue-list">
+                    <div class="venue-item">
+                        <span class="venue-name">🏟️ Allianz Arena</span>
+                        <span class="disruption-level high">HIGH</span>
+                    </div>
+                    <div class="venue-item">
+                        <span class="venue-name">🎵 Olympiastadion</span>
+                        <span class="disruption-level high">HIGH</span>
+                    </div>
+                    <div class="venue-item">
+                        <span class="venue-name">🏟️ Signal Iduna Park</span>
+                        <span class="disruption-level medium">MED</span>
+                    </div>
+                    <div class="venue-item">
+                        <span class="venue-name">🎭 Festspielhaus</span>
+                        <span class="disruption-level low">LOW</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Panel: Temporal Analytics Engine -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-icon">⚡</div>
+                <div class="panel-title">Temporal Analytics</div>
+            </div>
+            <div class="panel-content">
+                <div class="analytics-flow">
+                    <div class="flow-step active">
+                        <div class="step-title">Pattern Recognition <span class="processing-indicator"></span></div>
+                        <div class="step-description">Analyzing 2 years of historical event data</div>
+                    </div>
+                    
+                    <div class="flow-arrow">↓</div>
+                    
+                    <div class="flow-step active">
+                        <div class="step-title">Event Correlation</div>
+                        <div class="step-description">Matching events to delivery disruptions</div>
+                    </div>
+                    
+                    <div class="flow-arrow">↓</div>
+                    
+                    <div class="flow-step active">
+                        <div class="step-title">Route Impact Modeling</div>
+                        <div class="step-description">Calculating zone-specific delays</div>
+                    </div>
+                    
+                    <div class="flow-arrow">↓</div>
+                    
+                    <div class="flow-step">
+                        <div class="step-title">Predictive Routing</div>
+                        <div class="step-description">Generating optimal route adjustments</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Predictive Route Adjustments -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-icon">🎯</div>
+                <div class="panel-title">Predictive Route Intelligence</div>
+            </div>
+            <div class="panel-content">
+                <div class="predictions">
+                    <div class="prediction-item">
+                        <div class="prediction-header">
+                            <div class="event-name">🏟️ Bayern vs Dortmund</div>
+                            <div class="event-date">Tomorrow 15:30</div>
+                        </div>
+                        <div class="route-adjustment">
+                            <span class="adjustment-icon">🔄</span>
+                            <span class="adjustment-text">Reroute 47 vehicles via A96</span>
+                        </div>
+                        <div class="route-adjustment">
+                            <span class="adjustment-icon">⏰</span>
+                            <span class="adjustment-text">Start deliveries 2h earlier</span>
+                        </div>
+                        <div class="impact-metric">+23% efficiency</div>
+                    </div>
+
+                    <div class="prediction-item">
+                        <div class="prediction-header">
+                            <div class="event-name">🎵 Oktoberfest Opening</div>
+                            <div class="event-date">Sep 21-22</div>
+                        </div>
+                        <div class="route-adjustment">
+                            <span class="adjustment-icon">🚫</span>
+                            <span class="adjustment-text">Avoid Theresienwiese zone</span>
+                        </div>
+                        <div class="route-adjustment">
+                            <span class="adjustment-icon">📍</span>
+                            <span class="adjustment-text">Use alternative depot locations</span>
+                        </div>
+                        <div class="impact-metric">+18% efficiency</div>
+                    </div>
+
+                    <div class="prediction-item">
+                        <div class="prediction-header">
+                            <div class="event-name">🎭 Wagner Festival</div>
+                            <div class="event-date">Next Week</div>
+                        </div>
+                        <div class="route-adjustment">
+                            <span class="adjustment-icon">✅</span>
+                            <span class="adjustment-text">Normal operations maintained</span>
+                        </div>
+                        <div class="impact-metric">Standard routing</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create heatmap visualization
+        const svg = d3.select("#heatmap");
+        const width = parseInt(svg.style("width"));
+        const height = parseInt(svg.style("height"));
+
+        // Sample heatmap data representing disruption intensity over time
+        const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+        const weeks = ["Week 1", "Week 2", "Week 3", "Week 4"];
+        
+        const heatmapData = [];
+        weeks.forEach((week, weekIndex) => {
+            days.forEach((day, dayIndex) => {
+                // Simulate higher disruption on weekends and certain events
+                let intensity = Math.random() * 0.3;
+                if (dayIndex >= 5) intensity += 0.4; // Weekend effect
+                if (weekIndex === 1 && dayIndex === 5) intensity = 0.9; // Major event
+                if (weekIndex === 2 && dayIndex === 6) intensity = 0.8; // Another event
+                
+                heatmapData.push({
+                    week: weekIndex,
+                    day: dayIndex,
+                    intensity: Math.min(intensity, 1),
+                    weekLabel: week,
+                    dayLabel: day
+                });
+            });
+        });
+
+        const cellWidth = (width - 60) / 7;
+        const cellHeight = (height - 40) / 4;
+
+        // Color scale for disruption intensity
+        const colorScale = d3.scaleSequential(d3.interpolateReds)
+            .domain([0, 1]);
+
+        // Create heatmap cells
+        svg.selectAll(".heatmap-cell")
+            .data(heatmapData)
+            .enter()
+            .append("rect")
+            .attr("class", "heatmap-cell")
+            .attr("x", d => 40 + d.day * cellWidth)
+            .attr("y", d => 20 + d.week * cellHeight)
+            .attr("width", cellWidth - 2)
+            .attr("height", cellHeight - 2)
+            .attr("fill", d => colorScale(d.intensity))
+            .attr("rx", 3);
+
+        // Add day labels
+        svg.selectAll(".day-label")
+            .data(days)
+            .enter()
+            .append("text")
+            .attr("class", "day-label")
+            .attr("x", (d, i) => 40 + i * cellWidth + cellWidth/2)
+            .attr("y", 15)
+            .attr("text-anchor", "middle")
+            .style("fill", "#cbd5e1")
+            .style("font-size", "10px")
+            .text(d => d);
+
+        // Add week labels
+        svg.selectAll(".week-label")
+            .data(weeks)
+            .enter()
+            .append("text")
+            .attr("class", "week-label")
+            .attr("x", 5)
+            .attr("y", (d, i) => 20 + i * cellHeight + cellHeight/2)
+            .attr("text-anchor", "start")
+            .style("fill", "#cbd5e1")
+            .style("font-size", "10px")
+            .text(d => d);
+
+        // Animate processing steps
+        let currentStep = 0;
+        const steps = document.querySelectorAll(".flow-step");
+        
+        function animateSteps() {
+            steps.forEach(step => step.classList.remove("active"));
+            
+            for (let i = 0; i <= currentStep; i++) {
+                steps[i].classList.add("active");
+            }
+            
+            currentStep = (currentStep + 1) % steps.length;
+        }
+
+        // Start animation
+        setInterval(animateSteps, 2000);
+    </script>
+</body>
+</html>'
+                            style="width: 100%; height: 750px; border: none; border-radius: 15px;"
+                            title="Predictive Route Intelligence Dashboard">
+                        </iframe>
+                    </div>
+                </div>
+                
+                <!-- Aircraft Planning Case Study -->
+                <div class="impact-case">
+                    <div class="case-header">
+                        <div class="case-icon">✈️</div>
+                        <div class="case-industry">Aviation Operations</div>
+                        <div class="case-company">Major International Airline</div>
+                    </div>
+                    
+                    <div class="before-after">
+                        <div class="before-section">
+                            <h4>❌ Before: Complex Manual Planning</h4>
+                            <div class="pain-points">
+                                <div class="pain-point">📋 Manual spreadsheet-based crew scheduling</div>
+                                <div class="pain-point">🕐 48-hour turnaround for schedule changes</div>
+                                <div class="pain-point">❓ No real-time certification status tracking</div>
+                                <div class="pain-point">🌍 Location conflicts and missed connections</div>
+                                <div class="pain-point">😴 Fatigue management reactive, not predictive</div>
+                            </div>
+                        </div>
+                        
+                        <div class="transformation-arrow">
+                            <div class="arrow-content">
+                                <span>Temporal Analytics</span>
+                                <div class="arrow-visual">→</div>
+                            </div>
+                        </div>
+                        
+                        <div class="after-section">
+                            <h4>✅ After: Predictive Flight Operations</h4>
+                            <div class="benefits-points">
+                                <div class="benefit-point">🎯 AI-powered crew optimization in real-time</div>
+                                <div class="benefit-point">📊 Predictive fatigue and rest time management</div>
+                                <div class="benefit-point">✅ Automatic certification expiry tracking</div>
+                                <div class="benefit-point">🗺️ Dynamic location and aircraft type matching</div>
+                                <div class="benefit-point">🔮 Proactive disruption management</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="impact-metrics">
+                        <div class="metric">
+                            <div class="metric-number">73%</div>
+                            <div class="metric-label">Faster Rescheduling</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-number">45%</div>
+                            <div class="metric-label">Fewer Delays</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-number">$8.7M</div>
+                            <div class="metric-label">Annual Savings</div>
+                        </div>
+                    </div>
+                    
+                    <div class="case-visualization">
+                        <iframe 
+                            srcdoc='<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Flight Operations Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+            font-family: "Arial", sans-serif;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .plane-icon {
+            font-size: 2rem;
+        }
+
+        .header-text h1 {
+            margin: 0;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #06b6d4, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-text p {
+            margin: 5px 0 0 0;
+            color: #cbd5e1;
+            font-size: 1rem;
+        }
+
+        .main-dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            height: 500px;
+            margin-bottom: 30px;
+        }
+
+        .panel {
+            background: rgba(30, 27, 75, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .panel-icon {
+            font-size: 1.5rem;
+        }
+
+        .panel-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #06b6d4;
+        }
+
+        .live-indicator {
+            margin-left: auto;
+            background: #ef4444;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .panel-content {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        /* Left Panel - Current Flight Status */
+        .flight-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .flight-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            border-left: 4px solid transparent;
+        }
+
+        .flight-item.conflict {
+            border-left-color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .flight-item.warning {
+            border-left-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        .flight-item.normal {
+            border-left-color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .flight-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .flight-number {
+            font-weight: bold;
+            color: #cbd5e1;
+        }
+
+        .flight-status {
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .conflict-status { background: #ef4444; color: white; }
+        .warning-status { background: #f59e0b; color: white; }
+        .normal-status { background: #10b981; color: white; }
+
+        .flight-details {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        .crew-conflict {
+            color: #ef4444;
+            font-weight: bold;
+            margin-top: 3px;
+            font-size: 0.7rem;
+        }
+
+        /* Center Panel - AI Engine */
+        .ai-engine {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            height: 100%;
+        }
+
+        .processing-stage {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+
+        .processing-stage.active {
+            background: rgba(6, 182, 212, 0.2);
+            border-color: #06b6d4;
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .stage-title {
+            font-weight: bold;
+            color: #06b6d4;
+            margin-bottom: 5px;
+        }
+
+        .stage-description {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+        }
+
+        .processing-indicator {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #06b6d4;
+            border-top: 2px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stage-arrow {
+            text-align: center;
+            color: #06b6d4;
+            font-size: 1.2rem;
+        }
+
+        .ai-metrics {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: auto;
+        }
+
+        .ai-metric {
+            display: flex;
+            justify-content: space-between;
+            margin: 3px 0;
+            font-size: 0.8rem;
+        }
+
+        /* Right Panel - Predictive Actions */
+        .predictions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .prediction-item {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        .prediction-item.urgent {
+            background: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .prediction-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .prediction-title {
+            font-weight: bold;
+            color: #10b981;
+            font-size: 0.9rem;
+        }
+
+        .prediction-item.urgent .prediction-title {
+            color: #f59e0b;
+        }
+
+        .prediction-time {
+            font-size: 0.7rem;
+            color: #cbd5e1;
+        }
+
+        .prediction-action {
+            font-size: 0.8rem;
+            margin: 3px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .action-icon {
+            color: #06b6d4;
+        }
+
+        .confidence-score {
+            background: rgba(16, 185, 129, 0.2);
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #10b981;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            background: rgba(30, 27, 75, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            margin-bottom: 30px;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #06b6d4;
+            margin-bottom: 5px;
+        }
+
+        .timeline-subtitle {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        .timeline-container {
+            height: 100px;
+            position: relative;
+        }
+
+        .timeline-svg {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="plane-icon">✈️</div>
+        <div class="header-text">
+            <h1>Aviation Operations</h1>
+            <p>Major International Airline</p>
+        </div>
+    </div>
+
+    <div class="main-dashboard">
+        <!-- Left Panel: Current Flight Status -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-icon">📋</div>
+                <div class="panel-title">Current Flight Status</div>
+                <div class="live-indicator">LIVE</div>
+            </div>
+            <div class="panel-content">
+                <div class="flight-list" id="flightList">
+                    <!-- Flights will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Panel: AI Scheduling Engine -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-icon">🤖</div>
+                <div class="panel-title">AI Scheduling Engine</div>
+            </div>
+            <div class="panel-content">
+                <div class="ai-engine">
+                    <div class="processing-stage active">
+                        <div class="stage-title">Real-Time Analysis <span class="processing-indicator"></span></div>
+                        <div class="stage-description">Processing 847 crew schedules</div>
+                    </div>
+                    
+                    <div class="stage-arrow">↓</div>
+                    
+                    <div class="processing-stage active">
+                        <div class="stage-title">Conflict Detection</div>
+                        <div class="stage-description">Found 12 certification conflicts</div>
+                    </div>
+                    
+                    <div class="stage-arrow">↓</div>
+                    
+                    <div class="processing-stage active">
+                        <div class="stage-title">Optimization Engine</div>
+                        <div class="stage-description">Calculating optimal reassignments</div>
+                    </div>
+                    
+                    <div class="stage-arrow">↓</div>
+                    
+                    <div class="processing-stage">
+                        <div class="stage-title">Auto-Scheduling</div>
+                        <div class="stage-description">Deploying solutions in 2.3 seconds</div>
+                    </div>
+
+                    <div class="ai-metrics">
+                        <div class="ai-metric">
+                            <span>Active Flights:</span>
+                            <span>247</span>
+                        </div>
+                        <div class="ai-metric">
+                            <span>Crew Members:</span>
+                            <span>847</span>
+                        </div>
+                        <div class="ai-metric">
+                            <span>Conflicts Resolved:</span>
+                            <span>23 today</span>
+                        </div>
+                        <div class="ai-metric">
+                            <span>Avg Response:</span>
+                            <span>2.1 sec</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Predictive Actions -->
+        <div class="panel">
+            <div class="panel-header">
+                <div class="panel-icon">🎯</div>
+                <div class="panel-title">Predictive Actions</div>
+            </div>
+            <div class="panel-content">
+                <div class="predictions">
+                    <div class="prediction-item urgent">
+                        <div class="prediction-header">
+                            <div class="prediction-title">⚠️ Crew Fatigue Alert</div>
+                            <div class="prediction-time">Next 2 hours</div>
+                        </div>
+                        <div class="prediction-action">
+                            <span class="action-icon">👨‍✈️</span>
+                            <span>Replace Capt. Johnson on LH441</span>
+                        </div>
+                        <div class="prediction-action">
+                            <span class="action-icon">📍</span>
+                            <span>Standby crew dispatched to Gate B12</span>
+                        </div>
+                        <div class="confidence-score">96% confidence</div>
+                    </div>
+
+                    <div class="prediction-item">
+                        <div class="prediction-header">
+                            <div class="prediction-title">📋 Certification Expiry</div>
+                            <div class="prediction-time">Tomorrow</div>
+                        </div>
+                        <div class="prediction-action">
+                            <span class="action-icon">🔄</span>
+                            <span>Auto-reassign 3 flights from Munich</span>
+                        </div>
+                        <div class="prediction-action">
+                            <span class="action-icon">📚</span>
+                            <span>Training scheduled for FO Martinez</span>
+                        </div>
+                        <div class="confidence-score">89% confidence</div>
+                    </div>
+
+                    <div class="prediction-item">
+                        <div class="prediction-header">
+                            <div class="prediction-title">🌍 Route Optimization</div>
+                            <div class="prediction-time">Next week</div>
+                        </div>
+                        <div class="prediction-action">
+                            <span class="action-icon">✈️</span>
+                            <span>Optimize Frankfurt-London rotation</span>
+                        </div>
+                        <div class="prediction-action">
+                            <span class="action-icon">💰</span>
+                            <span>Est. savings: €47,000</span>
+                        </div>
+                        <div class="confidence-score">92% confidence</div>
+                    </div>
+
+                    <div class="prediction-item">
+                        <div class="prediction-header">
+                            <div class="prediction-title">🏖️ Peak Season Prep</div>
+                            <div class="prediction-time">Summer 2024</div>
+                        </div>
+                        <div class="prediction-action">
+                            <span class="action-icon">📈</span>
+                            <span>Increase Mediterranean capacity</span>
+                        </div>
+                        <div class="prediction-action">
+                            <span class="action-icon">👥</span>
+                            <span>Hire 34 additional crew members</span>
+                        </div>
+                        <div class="confidence-score">85% confidence</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <div class="timeline-section">
+        <div class="timeline-header">
+            <div class="timeline-title">Disruption Management Timeline</div>
+            <div class="timeline-subtitle">AI containment vs cascading delays</div>
+        </div>
+        <div class="timeline-container">
+            <svg class="timeline-svg" id="timelineSvg"></svg>
+        </div>
+    </div>
+
+    <script>
+        // Sample flight data
+        const flights = [
+            { number: "LH441", route: "FRA → JFK", status: "conflict", time: "14:30", issue: "Crew certification expired" },
+            { number: "LH442", route: "JFK → FRA", status: "warning", time: "18:45", issue: "Crew fatigue approaching limit" },
+            { number: "LH501", route: "MUC → LHR", status: "normal", time: "09:15", issue: null },
+            { number: "LH502", route: "LHR → MUC", status: "normal", time: "12:30", issue: null },
+            { number: "LH681", route: "FRA → LAX", status: "conflict", time: "16:20", issue: "Pilot location mismatch" },
+            { number: "LH682", route: "LAX → FRA", status: "warning", time: "11:40", issue: "Weather delay impact" },
+            { number: "LH711", route: "MUC → NRT", status: "normal", time: "13:50", issue: null },
+            { number: "LH461", route: "FRA → CDG", status: "warning", time: "07:25", issue: "Standby crew needed" }
+        ];
+
+        // Populate flight list
+        function populateFlights() {
+            const flightList = document.getElementById("flightList");
+            
+            flights.forEach(flight => {
+                const flightItem = document.createElement("div");
+                flightItem.className = `flight-item ${flight.status}`;
+                
+                let statusClass = "";
+                let statusText = "";
+                
+                switch(flight.status) {
+                    case "conflict":
+                        statusClass = "conflict-status";
+                        statusText = "CONFLICT";
+                        break;
+                    case "warning":
+                        statusClass = "warning-status";
+                        statusText = "WARNING";
+                        break;
+                    case "normal":
+                        statusClass = "normal-status";
+                        statusText = "ON-TIME";
+                        break;
+                }
+                
+                flightItem.innerHTML = `
+                    <div class="flight-header">
+                        <span class="flight-number">${flight.number}</span>
+                        <span class="flight-status ${statusClass}">${statusText}</span>
+                    </div>
+                    <div class="flight-details">
+                        ${flight.route} • Dep: ${flight.time}
+                    </div>
+                    ${flight.issue ? `<div class="crew-conflict">${flight.issue}</div>` : ""}
+                `;
+                
+                flightList.appendChild(flightItem);
+            });
+        }
+
+        // Create timeline visualization
+        function createTimeline() {
+            const svg = d3.select("#timelineSvg");
+            const width = parseInt(svg.style("width"));
+            const height = parseInt(svg.style("height"));
+
+            const timePoints = [
+                { time: 0, manual: 0, ai: 0, label: "Initial Disruption" },
+                { time: 20, manual: 2, ai: 1, label: "T+15min" },
+                { time: 40, manual: 5, ai: 1, label: "T+30min" },
+                { time: 60, manual: 12, ai: 2, label: "T+1hr" },
+                { time: 80, manual: 25, ai: 2, label: "T+2hr" },
+                { time: 100, manual: 45, ai: 3, label: "T+4hr" }
+            ];
+
+            const xScale = d3.scaleLinear()
+                .domain([0, 100])
+                .range([40, width - 40]);
+
+            const yScale = d3.scaleLinear()
+                .domain([0, 50])
+                .range([height - 20, 20]);
+
+            // Manual approach line (red)
+            const manualLine = d3.line()
+                .x(d => xScale(d.time))
+                .y(d => yScale(d.manual))
+                .curve(d3.curveMonotoneX);
+
+            // AI approach line (green)
+            const aiLine = d3.line()
+                .x(d => xScale(d.time))
+                .y(d => yScale(d.ai))
+                .curve(d3.curveMonotoneX);
+
+            // Draw manual approach
+            svg.append("path")
+                .datum(timePoints)
+                .attr("fill", "none")
+                .attr("stroke", "#ef4444")
+                .attr("stroke-width", 3)
+                .attr("d", manualLine);
+
+            // Draw AI approach
+            svg.append("path")
+                .datum(timePoints)
+                .attr("fill", "none")
+                .attr("stroke", "#10b981")
+                .attr("stroke-width", 3)
+                .attr("d", aiLine);
+
+            // Add time labels
+            svg.selectAll(".time-label")
+                .data(timePoints)
+                .enter()
+                .append("text")
+                .attr("class", "time-label")
+                .attr("x", d => xScale(d.time))
+                .attr("y", height - 5)
+                .attr("text-anchor", "middle")
+                .style("fill", "#cbd5e1")
+                .style("font-size", "10px")
+                .text(d => d.label);
+
+            // Add legend
+            svg.append("text")
+                .attr("x", 50)
+                .attr("y", 30)
+                .style("fill", "#ef4444")
+                .style("font-size", "12px")
+                .style("font-weight", "bold")
+                .text("Manual Response");
+
+            svg.append("text")
+                .attr("x", 50)
+                .attr("y", 45)
+                .style("fill", "#10b981")
+                .style("font-size", "12px")
+                .style("font-weight", "bold")
+                .text("AI Containment");
+
+            // Y-axis label
+            svg.append("text")
+                .attr("x", 20)
+                .attr("y", height / 2)
+                .attr("text-anchor", "middle")
+                .style("fill", "#cbd5e1")
+                .style("font-size", "10px")
+                .text("Affected Flights");
+        }
+
+        // Animate AI processing stages
+        let currentStage = 0;
+        const stages = document.querySelectorAll(".processing-stage");
+        
+        function animateStages() {
+            stages.forEach(stage => stage.classList.remove("active"));
+            
+            for (let i = 0; i <= currentStage; i++) {
+                stages[i].classList.add("active");
+            }
+            
+            currentStage = (currentStage + 1) % stages.length;
+        }
+
+        // Initialize dashboard
+        populateFlights();
+        createTimeline();
+        
+        // Start animations
+        setInterval(animateStages, 3000);
+
+        // Animate flight updates
+        setInterval(() => {
+            const flightItems = document.querySelectorAll(".flight-item");
+            const randomItem = flightItems[Math.floor(Math.random() * flightItems.length)];
+            randomItem.style.boxShadow = "0 0 15px rgba(6, 182, 212, 0.5)";
+            setTimeout(() => {
+                randomItem.style.boxShadow = "none";
+            }, 1000);
+        }, 4000);
+    </script>
+</body>
+</html>'
+                            style="width: 100%; height: 900px; border: none; border-radius: 15px;"
+                            title="Live Flight Operations Dashboard">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Impact Summary -->
+            <div class="impact-summary">
+                <h3>The Power of Temporal Insights</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <div class="summary-icon">⚡</div>
+                        <h4>Instant Intelligence</h4>
+                        <p>Transform weeks of analysis into real-time insights, enabling immediate response to changing conditions.</p>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-icon">🔮</div>
+                        <h4>Predictive Power</h4>
+                        <p>Move from reactive to predictive decision-making by understanding how relationships evolve over time.</p>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-icon">💰</div>
+                        <h4>Measurable ROI</h4>
+                        <p>Average customers see 3-5x ROI within 6 months through operational efficiency and risk reduction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">Why Temporal Analytics?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Real-Time Insights</h3>
+                    <p>Monitor evolving relationships and patterns as they happen, enabling immediate response to critical changes in your business environment.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔮</div>
+                    <h3>Predictive Power</h3>
+                    <p>Leverage historical relationship patterns to forecast future trends, risks, and opportunities with unprecedented accuracy.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔗</div>
+                    <h3>Complex Relationship Mapping</h3>
+                    <p>Visualize and analyze intricate connections between entities, revealing hidden dependencies and influence networks.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🚀</div>
+                    <h3>Seamless Integration</h3>
+                    <p>Connect with your existing data sources effortlessly. No complex migration or system overhaul required.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Pattern Recognition</h3>
+                    <p>Automatically identify recurring patterns and anomalies across time, helping you stay ahead of market changes.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚙️</div>
+                    <h3>No-Hassle Implementation</h3>
+                    <p>Get up and running quickly with our intuitive platform designed for business users, not just data scientists.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries">
+        <div class="container">
+            <h2 class="section-title">Transforming Industries</h2>
+            <div class="industries-grid">
+                <div class="industry-card" onclick="showUseCase('finance')">
+                    <h3>🏦 Financial Services</h3>
+                    <p>Fraud detection, risk assessment, and trading pattern analysis</p>
+                </div>
+                <div class="industry-card" onclick="showUseCase('supply')">
+                    <h3>📦 Supply Chain</h3>
+                    <p>End-to-end visibility, delay prediction, and optimization</p>
+                </div>
+                <div class="industry-card" onclick="showUseCase('healthcare')">
+                    <h3>🏥 Healthcare</h3>
+                    <p>Patient journey analysis and treatment outcome prediction</p>
+                </div>
+                <div class="industry-card" onclick="showUseCase('retail')">
+                    <h3>🛒 Retail & E-commerce</h3>
+                    <p>Customer behavior tracking and inventory optimization</p>
+                </div>
+                <div class="industry-card" onclick="showUseCase('cyber')">
+                    <h3>🔒 Cybersecurity</h3>
+                    <p>Threat detection and attack pattern analysis</p>
+                </div>
+                <div class="industry-card" onclick="showUseCase('energy')">
+                    <h3>⚡ Energy & Utilities</h3>
+                    <p>Grid optimization and demand forecasting</p>
+                </div>
+                <div class="industry-card" onclick="showUseCase('manufacturing')">
+                    <h3>🏭 Manufacturing</h3>
+                    <p>Predictive maintenance and quality control</p>
+                </div>
+                <div class="industry-card" onclick="showUseCase('telecom')">
+                    <h3>📡 Telecommunications</h3>
+                    <p>Network optimization and customer churn prediction</p>
+                </div>
+                <div class="industry-card" onclick="showUseCase('logistics')">
+                    <h3>🚛 Logistics & Transportation</h3>
+                    <p>Route optimization, fleet management, and delivery prediction</p>
+                </div>
+                <div class="industry-card" onclick="showUseCase('hr')">
+                    <h3>👥 Human Resources</h3>
+                    <p>Talent analytics, retention prediction, and workforce optimization</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engine Architecture Section -->
+    <section class="engine" id="engine">
+        <div class="container">
+            <h2 class="section-title">The Analytics Engine</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 4rem; opacity: 0.9;">
+                Powered by three interconnected components that transform raw data into temporal insights
+            </p>
+            
+            <div class="engine-flow">
+                <!-- Alchemy -->
+                <div class="engine-component alchemy" onclick="showEngineDetails('alchemy')">
+                    <div class="component-header">
+                        <div class="component-icon">🧪</div>
+                        <h3>Alchemy</h3>
+                        <span class="step-number">Step 1</span>
+                    </div>
+                    <div class="component-subtitle">Data Connection Engine</div>
+                    <div class="component-features">
+                        <div class="feature">Plugin-based Architecture</div>
+                        <div class="feature">Wire-by-YAML Configuration</div>
+                        <div class="feature">Reactive Streams</div>
+                        <div class="feature">Auto-complete & Validation</div>
+                    </div>
+                    <div class="data-flow-indicator">
+                        <div class="flow-arrow"></div>
+                    </div>
+                </div>
+
+                <!-- Aurora -->
+                <div class="engine-component aurora" onclick="showEngineDetails('aurora')">
+                    <div class="component-header">
+                        <div class="component-icon">🌌</div>
+                        <h3>Aurora</h3>
+                        <span class="step-number">Step 2</span>
+                    </div>
+                    <div class="component-subtitle">Temporal Event Store</div>
+                    <div class="component-features">
+                        <div class="feature">Event Sourcing</div>
+                        <div class="feature">Time-Travel Queries</div>
+                        <div class="feature">Neo4j Projections</div>
+                        <div class="feature">GraphQL API</div>
+                    </div>
+                    <div class="data-flow-indicator">
+                        <div class="flow-arrow"></div>
+                    </div>
+                </div>
+
+                <!-- Astral -->
+                <div class="engine-component astral" onclick="showEngineDetails('astral')">
+                    <div class="component-header">
+                        <div class="component-icon">✨</div>
+                        <h3>Astral</h3>
+                        <span class="step-number">Step 3</span>
+                    </div>
+                    <div class="component-subtitle">Visualization Layer</div>
+                    <div class="component-features">
+                        <div class="feature">Interactive Dashboards</div>
+                        <div class="feature">Content Management</div>
+                        <div class="feature">Real-time Updates</div>
+                        <div class="feature">Custom Visualizations</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="engine-demo">
+                <div class="demo-tabs">
+                    <button class="tab-button active" onclick="showEngineDemo('flow')">Data Flow</button>
+                    <button class="tab-button" onclick="showEngineDemo('temporal')">Temporal View</button>
+                    <button class="tab-button" onclick="showEngineDemo('relationships')">Relationships</button>
+                </div>
+                
+                <div class="demo-content-area">
+                    <div id="flow-demo" class="engine-demo-view active">
+                        <div class="data-pipeline">
+                            <div class="pipeline-stage" data-stage="sources">
+                                <h4>Data Sources</h4>
+                                <div class="data-source">SQL Database</div>
+                                <div class="data-source">REST APIs</div>
+                                <div class="data-source">Message Queues</div>
+                                <div class="data-source">File Systems</div>
+                            </div>
+                            <div class="pipeline-stage" data-stage="processing">
+                                <h4>Real-time Processing</h4>
+                                <div class="processing-indicator"></div>
+                            </div>
+                            <div class="pipeline-stage" data-stage="storage">
+                                <h4>Event Storage</h4>
+                                <div class="event-stream">
+                                    <div class="event"></div>
+                                    <div class="event"></div>
+                                    <div class="event"></div>
+                                </div>
+                            </div>
+                            <div class="pipeline-stage" data-stage="visualization">
+                                <h4>Live Dashboards</h4>
+                                <div class="mini-chart">
+                                    <div class="chart-bar"></div>
+                                    <div class="chart-bar"></div>
+                                    <div class="chart-bar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="temporal-demo" class="engine-demo-view">
+                        <div class="temporal-visualization">
+                            <div class="time-axis">
+                                <div class="time-marker past">Past</div>
+                                <div class="time-marker present active">Present</div>
+                                <div class="time-marker future">Future</div>
+                            </div>
+                            <div class="temporal-events">
+                                <div class="temporal-event" style="left: 20%;">Event A</div>
+                                <div class="temporal-event" style="left: 45%;">Event B</div>
+                                <div class="temporal-event active" style="left: 70%;">Current</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="relationships-demo" class="engine-demo-view">
+                        <div class="relationship-graph">
+                            <div class="graph-node" style="top: 20%; left: 20%;">Entity A</div>
+                            <div class="graph-node" style="top: 60%; left: 30%;">Entity B</div>
+                            <div class="graph-node" style="top: 40%; left: 60%;">Entity C</div>
+                            <div class="graph-node" style="top: 70%; left: 70%;">Entity D</div>
+                            <svg class="relationship-lines">
+                                <line x1="20%" y1="25%" x2="35%" y2="65%" stroke="rgba(0,212,255,0.6)" stroke-width="2"/>
+                                <line x1="35%" y1="65%" x2="65%" y2="45%" stroke="rgba(0,212,255,0.6)" stroke-width="2"/>
+                                <line x1="25%" y1="25%" x2="65%" y2="45%" stroke="rgba(255,0,255,0.6)" stroke-width="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo" id="demo">
+        <div class="container">
+            <div class="demo-container">
+                <div class="demo-content">
+                    <h2>See Relationships Evolve Over Time</h2>
+                    <p>Watch how our platform reveals the dynamic nature of complex business relationships. Each data point represents a connection that changes over time, providing insights that static analysis simply cannot capture.</p>
+                    <ul style="margin-top: 2rem; list-style: none;">
+                        <li style="margin: 1rem 0;">✓ Multi-dimensional relationship tracking</li>
+                        <li style="margin: 1rem 0;">✓ Temporal pattern recognition</li>
+                        <li style="margin: 1rem 0;">✓ Predictive relationship modeling</li>
+                        <li style="margin: 1rem 0;">✓ Real-time anomaly detection</li>
+                    </ul>
+                </div>
+                <div class="demo-visual">
+                    <!-- Temporal Timeline -->
+                    <div class="temporal-timeline">
+                        <div class="timeline-phase past">
+                            <div class="phase-marker"></div>
+                            <div class="phase-label">Past</div>
+                            <div class="phase-desc">Historical patterns and foundations</div>
+                        </div>
+                        <div class="timeline-phase present active">
+                            <div class="phase-marker"></div>
+                            <div class="phase-label">Present</div>
+                            <div class="phase-desc">Current network state & dynamics</div>
+                        </div>
+                        <div class="timeline-phase future">
+                            <div class="phase-marker"></div>
+                            <div class="phase-label">Future</div>
+                            <div class="phase-desc">Predicted trends and opportunities</div>
+                        </div>
+                        <div class="timeline-connector"></div>
+                    </div>
+                    
+                    <!-- Network Visualization -->
+                    <div class="network-visualization">
+                        <!-- Core Network Nodes -->
+                        <div class="network-node large executive" style="top: 45%; left: 50%;" data-entity="Executive Core"></div>
+                        <div class="network-node medium tech" style="top: 25%; left: 35%;" data-entity="AI Innovation"></div>
+                        <div class="network-node large tech" style="top: 30%; right: 25%;" data-entity="Deep Learning"></div>
+                        <div class="network-node medium executive" style="top: 35%; left: 25%;" data-entity="AI Strategy"></div>
+                        <div class="network-node small executive" style="top: 55%; left: 30%;" data-entity="Executive Team"></div>
+                        <div class="network-node large data" style="top: 60%; right: 30%;" data-entity="Data Flow"></div>
+                        <div class="network-node medium security" style="bottom: 25%; right: 20%;" data-entity="Security"></div>
+                        <div class="network-node medium cloud" style="bottom: 35%; left: 20%;" data-entity="Cloud Infrastructure"></div>
+                        <div class="network-node small data" style="bottom: 30%; left: 45%;" data-entity="Data Management"></div>
+                        <div class="network-node large tech" style="bottom: 20%; left: 55%;" data-entity="Technology"></div>
+                        <div class="network-node small tech" style="top: 20%; left: 60%;" data-entity="Innovation"></div>
+                        <div class="network-node medium data" style="top: 40%; left: 70%;" data-entity="Analytics"></div>
+                        <div class="network-node small security" style="top: 70%; left: 60%;" data-entity="Compliance"></div>
+                        <div class="network-node medium executive" style="bottom: 40%; right: 35%;" data-entity="Leadership"></div>
+                        <div class="network-node small cloud" style="top: 15%; left: 15%;" data-entity="Infrastructure"></div>
+
+                        <!-- Network Connections -->
+                        <svg class="network-connections">
+                            <!-- Central hub connections -->
+                            <line class="connection strong" x1="50%" y1="45%" x2="35%" y2="25%" />
+                            <line class="connection strong" x1="50%" y1="45%" x2="75%" y2="30%" />
+                            <line class="connection strong" x1="50%" y1="45%" x2="30%" y2="55%" />
+                            <line class="connection strong" x1="50%" y1="45%" x2="70%" y2="60%" />
+                            <line class="connection medium" x1="50%" y1="45%" x2="60%" y2="20%" />
+                            <line class="connection medium" x1="50%" y1="45%" x2="70%" y2="40%" />
+                            <line class="connection weak" x1="50%" y1="45%" x2="15%" y2="15%" />
+                            
+                            <!-- Cross connections - creating web pattern -->
+                            <line class="connection medium" x1="35%" y1="25%" x2="75%" y2="30%" />
+                            <line class="connection weak" x1="35%" y1="25%" x2="25%" y2="35%" />
+                            <line class="connection medium" x1="35%" y1="25%" x2="60%" y2="20%" />
+                            <line class="connection weak" x1="35%" y1="25%" x2="70%" y2="40%" />
+                            <line class="connection weak" x1="35%" y1="25%" x2="15%" y2="15%" />
+                            <line class="connection medium" x1="35%" y1="25%" x2="20%" y2="65%" />
+                            
+                            <line class="connection strong" x1="75%" y1="30%" x2="70%" y2="60%" />
+                            <line class="connection medium" x1="75%" y1="30%" x2="60%" y2="20%" />
+                            <line class="connection weak" x1="75%" y1="30%" x2="70%" y2="40%" />
+                            <line class="connection medium" x1="75%" y1="30%" x2="60%" y2="70%" />
+                            <line class="connection weak" x1="75%" y1="30%" x2="80%" y2="75%" />
+                            <line class="connection weak" x1="75%" y1="30%" x2="65%" y2="60%" />
+                            
+                            <!-- Secondary layer connections -->
+                            <line class="connection medium" x1="25%" y1="35%" x2="30%" y2="55%" />
+                            <line class="connection weak" x1="25%" y1="35%" x2="20%" y2="65%" />
+                            <line class="connection medium" x1="25%" y1="35%" x2="15%" y2="15%" />
+                            <line class="connection weak" x1="25%" y1="35%" x2="45%" y2="70%" />
+                            <line class="connection weak" x1="25%" y1="35%" x2="60%" y2="20%" />
+                            
+                            <line class="connection strong" x1="30%" y1="55%" x2="20%" y2="65%" />
+                            <line class="connection medium" x1="30%" y1="55%" x2="45%" y2="70%" />
+                            <line class="connection weak" x1="30%" y1="55%" x2="60%" y2="70%" />
+                            <line class="connection weak" x1="30%" y1="55%" x2="65%" y2="60%" />
+                            <line class="connection medium" x1="30%" y1="55%" x2="70%" y2="40%" />
+                            
+                            <line class="connection strong" x1="70%" y1="60%" x2="80%" y2="75%" />
+                            <line class="connection medium" x1="70%" y1="60%" x2="60%" y2="70%" />
+                            <line class="connection weak" x1="70%" y1="60%" x2="55%" y2="80%" />
+                            <line class="connection medium" x1="70%" y1="60%" x2="70%" y2="40%" />
+                            <line class="connection weak" x1="70%" y1="60%" x2="65%" y2="60%" />
+                            
+                            <!-- Tertiary layer - creating dense mesh -->
+                            <line class="connection weak" x1="60%" y1="20%" x2="70%" y2="40%" />
+                            <line class="connection medium" x1="60%" y1="20%" x2="15%" y2="15%" />
+                            <line class="connection weak" x1="60%" y1="20%" x2="60%" y2="70%" />
+                            <line class="connection weak" x1="60%" y1="20%" x2="55%" y2="80%" />
+                            
+                            <line class="connection medium" x1="70%" y1="40%" x2="60%" y2="70%" />
+                            <line class="connection weak" x1="70%" y1="40%" x2="65%" y2="60%" />
+                            <line class="connection weak" x1="70%" y1="40%" x2="20%" y2="65%" />
+                            <line class="connection medium" x1="70%" y1="40%" x2="45%" y2="70%" />
+                            
+                            <line class="connection weak" x1="20%" y1="65%" x2="45%" y2="70%" />
+                            <line class="connection medium" x1="20%" y1="65%" x2="55%" y2="80%" />
+                            <line class="connection weak" x1="20%" y1="65%" x2="60%" y2="70%" />
+                            <line class="connection weak" x1="20%" y1="65%" x2="80%" y2="75%" />
+                            <line class="connection medium" x1="20%" y1="65%" x2="15%" y2="15%" />
+                            
+                            <line class="connection strong" x1="80%" y1="75%" x2="60%" y2="70%" />
+                            <line class="connection medium" x1="80%" y1="75%" x2="55%" y2="80%" />
+                            <line class="connection weak" x1="80%" y1="75%" x2="45%" y2="70%" />
+                            <line class="connection weak" x1="80%" y1="75%" x2="65%" y2="60%" />
+                            
+                            <line class="connection medium" x1="45%" y1="70%" x2="55%" y2="80%" />
+                            <line class="connection weak" x1="45%" y1="70%" x2="60%" y2="70%" />
+                            <line class="connection medium" x1="45%" y1="70%" x2="65%" y2="60%" />
+                            <line class="connection weak" x1="45%" y1="70%" x2="15%" y2="15%" />
+                            
+                            <line class="connection weak" x1="55%" y1="80%" x2="60%" y2="70%" />
+                            <line class="connection medium" x1="55%" y1="80%" x2="65%" y2="60%" />
+                            <line class="connection weak" x1="55%" y1="80%" x2="15%" y2="15%" />
+                            
+                            <line class="connection weak" x1="60%" y1="70%" x2="65%" y2="60%" />
+                            <line class="connection medium" x1="60%" y1="70%" x2="15%" y2="15%" />
+                            
+                            <!-- Additional complex cross-connections -->
+                            <line class="connection weak" x1="15%" y1="15%" x2="65%" y2="60%" />
+                            <line class="connection weak" x1="35%" y1="25%" x2="80%" y2="75%" />
+                            <line class="connection weak" x1="75%" y1="30%" x2="45%" y2="70%" />
+                            <line class="connection weak" x1="25%" y1="35%" x2="55%" y2="80%" />
+                            <line class="connection weak" x1="30%" y1="55%" x2="60%" y2="20%" />
+                            <line class="connection weak" x1="70%" y1="60%" x2="15%" y2="15%" />
+                            <line class="connection weak" x1="60%" y1="20%" x2="80%" y2="75%" />
+                            <line class="connection weak" x1="70%" y1="40%" x2="55%" y2="80%" />
+                        </svg>
+                        
+                        <!-- Animated pulses -->
+                        <div class="network-pulse" style="top: 45%; left: 50%;"></div>
+                        <div class="network-pulse" style="top: 25%; left: 35%; animation-delay: 1s;"></div>
+                        <div class="network-pulse" style="top: 30%; right: 25%; animation-delay: 2s;"></div>
+                        <div class="network-pulse" style="top: 60%; right: 30%; animation-delay: 0.5s;"></div>
+                        <div class="network-pulse" style="bottom: 25%; right: 20%; animation-delay: 1.5s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="conclusion">
+        <div class="container">
+            <div class="conclusion-content">
+                <div class="contact-section">
+                    <h2>Ready to See How It Works?</h2>
+                    <p class="contact-intro">Contact eXOReaction today to see how Xorcery AAA fits into your systems.</p>
+                    
+                    <div class="contact-options">
+                        <button class="contact-btn primary" onclick="showContactForm()">
+                            Get a Demo
+                        </button>
+                        <button class="contact-btn secondary" onclick="showArchitectureDiscussion()">
+                            Architecture Discussion
+                        </button>
+                    </div>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-label">Email:</span>
+                            <span class="contact-value">totto@exoreaction.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">Schedule:</span>
+                            <span class="contact-value">Book a 30-minute technical deep dive</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hashtags">
+                    <span class="hashtag">#TemporalData</span>
+                    <span class="hashtag">#SystemArchitecture</span>
+                    <span class="hashtag">#DataLineage</span>
+                    <span class="hashtag">#GraphDatabase</span>
+                    <span class="hashtag">#eXOReaction</span>
+                    <span class="hashtag">#XorceryAAA</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Create animated network background
+        function createNetworkBackground() {
+            const networkBg = document.getElementById('networkBg');
+            const nodeCount = 15;
+            const nodes = [];
+
+            // Create nodes
+            for (let i = 0; i < nodeCount; i++) {
+                const node = document.createElement('div');
+                node.className = 'node';
+                node.style.left = Math.random() * 100 + '%';
+                node.style.top = Math.random() * 100 + '%';
+                node.style.animationDelay = Math.random() * 2 + 's';
+                networkBg.appendChild(node);
+                nodes.push(node);
+            }
+
+            // Create connections
+            for (let i = 0; i < nodeCount; i++) {
+                for (let j = i + 1; j < nodeCount; j++) {
+                    if (Math.random() > 0.7) { // Only connect some nodes
+                        const connection = document.createElement('div');
+                        connection.className = 'connection';
+                        
+                        const node1 = nodes[i];
+                        const node2 = nodes[j];
+                        
+                        const x1 = parseFloat(node1.style.left);
+                        const y1 = parseFloat(node1.style.top);
+                        const x2 = parseFloat(node2.style.left);
+                        const y2 = parseFloat(node2.style.top);
+                        
+                        const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                        const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                        
+                        connection.style.left = x1 + '%';
+                        connection.style.top = y1 + '%';
+                        connection.style.width = distance + '%';
+                        connection.style.transform = `rotate(${angle}deg)`;
+                        connection.style.animationDelay = Math.random() * 3 + 's';
+                        
+                        networkBg.appendChild(connection);
+                    }
+                }
+            }
+        }
+
+        function scrollToEngine() {
+            document.getElementById('engine').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showEngineDetails(component) {
+            const details = {
+                alchemy: {
+                    title: "Alchemy - Data Connection Engine",
+                    description: "The foundation layer that connects to any data source through a powerful plugin architecture.\n\n🔧 Plugin-Based Architecture:\n• Each data source is a configurable plugin\n• Custom sources and results supported\n• Extensible for any data format\n\n📝 Wire-by-YAML Configuration:\n• Simple YAML configuration for complex pipelines\n• Auto-complete and validation support\n• Generated JSON Schema for type safety\n\n⚡ Reactive Streams:\n• Optimal load balancing and resource usage\n• Real-time data processing\n• Automatic error recovery and resume capability\n\n✅ Pipeline Management:\n• Each pipeline item includes metadata + JSON\n• Position tracking for error recovery\n• Validation at startup and runtime"
+                },
+                aurora: {
+                    title: "Aurora - Temporal Event Store",
+                    description: "The temporal heart of the system, providing time-travel capabilities and relationship tracking.\n\n📊 Event Sourcing:\n• Domain events emitted on any change\n• Complete audit trail of all modifications\n• Immutable event history\n\n🕰️ Time Travel:\n• Access any snapshot state at any point in time\n• Make changes in past, present, or future\n• Rewrite history with migration rules\n\n🗄️ Neo4j Integration:\n• Events projected to versioned graph structure\n• Complex relationship queries\n• High-performance graph traversals\n\n🔍 GraphQL API:\n• Automatic conversion to Neo4j Cypher\n• Domain-specific schema generation\n• Per-value contextual access control\n\n🔒 Security & Privacy:\n• Optional anonymization at project-time\n• Fine-grained access control\n• Full compliance audit capabilities"
+                },
+                astral: {
+                    title: "Astral - Visualization Layer",
+                    description: "The user-facing layer that transforms complex temporal data into intuitive visualizations.\n\n📈 Dashboard-Style Visualizations:\n• Real-time updating charts and graphs\n• Interactive timeline exploration\n• Custom visualization components\n\n📝 Content Management System:\n• Organize and curate insights\n• Share findings across teams\n• Version control for dashboards\n\n🎨 Customizable Interface:\n• Drag-and-drop dashboard builder\n• White-label styling options\n• Responsive design for all devices\n\n🔄 Live Data Integration:\n• Direct connection to Aurora's GraphQL API\n• Real-time updates as data changes\n• Automatic refresh and synchronization\n\n📊 Advanced Analytics:\n• Pattern recognition visualizations\n• Anomaly detection highlights\n• Predictive modeling displays"
+                }
+            };
+
+            const detail = details[component];
+            alert(`${detail.title}\n\n${detail.description}`);
+        }
+
+        function showEngineDemo(demoType) {
+            // Hide all demo views
+            document.querySelectorAll('.engine-demo-view').forEach(view => {
+                view.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab-button').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected demo
+            document.getElementById(`${demoType}-demo`).classList.add('active');
+            
+            // Set active tab
+            event.target.classList.add('active');
+        }
+
+        function scrollToDemo() {
+            document.getElementById('engine').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showContactForm() {
+            alert("🚀 DEMO REQUEST\n\nThank you for your interest in Xorcery AAA!\n\nOur team will contact you within 24 hours to schedule a personalized demo showcasing:\n\n• Real-time temporal analytics in action\n• Integration with your existing systems\n• Custom use cases for your industry\n• ROI projections for your specific needs\n\nEmail: totto@exoreaction.com\nOr visit: www.exoreaction.com/demo");
+        }
+
+        function showArchitectureDiscussion() {
+            alert("🏗️ ARCHITECTURE DISCUSSION\n\nSchedule a technical deep dive with our solutions architects!\n\nWe'll cover:\n\n• How Xorcery AAA fits into your current architecture\n• Data migration strategies and timelines\n• Performance benchmarks and scalability\n• Security and compliance considerations\n• Custom plugin development options\n\nDuration: 30-45 minutes\nEmail: architects@exoreaction.com\nOr book directly: calendly.com/exoreaction/architecture");
+        }
+
+        function showUseCase(industry) {
+            const useCases = {
+                finance: "FINANCIAL SERVICES TRANSFORMATION:\n\n🔍 Fraud Detection:\n• Track transaction patterns across time\n• Identify relationship networks between accounts\n• Detect anomalies in spending behavior evolution\n\n📊 Risk Assessment:\n• Monitor portfolio relationships and dependencies\n• Analyze market correlation changes over time\n• Predict cascading risks through connection analysis\n\n💹 Trading Intelligence:\n• Pattern recognition in market movements\n• Relationship mapping between instruments\n• Temporal analysis of trading strategies",
+                supply: "SUPPLY CHAIN OPTIMIZATION:\n\n🚚 End-to-End Visibility:\n• Track products through complex supplier networks\n• Monitor relationship changes between partners\n• Real-time status across global supply chains\n\n⏰ Delay Prediction:\n• Analyze historical delay patterns\n• Identify bottlenecks before they occur\n• Optimize routes based on temporal performance\n\n🔄 Relationship Optimization:\n• Map supplier interdependencies\n• Identify critical path relationships\n• Optimize partner networks for resilience",
+                healthcare: "HEALTHCARE TRANSFORMATION:\n\n👥 Patient Journey Analysis:\n• Track patients across different providers\n• Analyze treatment pathways and outcomes\n• Identify optimal care coordination patterns\n\n📈 Treatment Prediction:\n• Predict outcomes based on similar patient journeys\n• Analyze effectiveness of treatment combinations\n• Optimize resource allocation and scheduling\n\n🏥 Provider Network Optimization:\n• Map referral patterns and relationships\n• Identify collaboration opportunities\n• Optimize care delivery networks",
+                retail: "RETAIL & E-COMMERCE INTELLIGENCE:\n\n🛍️ Customer Behavior Evolution:\n• Track customer journey changes over time\n• Analyze purchasing pattern development\n• Predict lifecycle stage transitions\n\n📦 Inventory Optimization:\n• Demand forecasting with seasonal patterns\n• Supplier relationship impact analysis\n• Product lifecycle and trend prediction\n\n🎯 Churn Prevention:\n• Early warning system for customer attrition\n• Relationship strength monitoring\n• Personalized retention strategies",
+                cyber: "CYBERSECURITY INTELLIGENCE:\n\n🛡️ Threat Detection:\n• Pattern recognition in attack sequences\n• Relationship mapping of threat actors\n• Evolution analysis of attack methods\n\n🔍 Network Monitoring:\n• Real-time relationship changes in network traffic\n• Anomaly detection in communication patterns\n• Predictive vulnerability assessment\n\n📊 Attack Attribution:\n• Timeline analysis of security incidents\n• Relationship mapping between attacks\n• Threat intelligence correlation",
+                energy: "ENERGY & UTILITIES OPTIMIZATION:\n\n⚡ Grid Optimization:\n• Real-time load balancing across networks\n• Relationship analysis between grid components\n• Predictive maintenance scheduling\n\n📈 Demand Forecasting:\n• Pattern recognition in consumption data\n• Weather and usage correlation analysis\n• Peak demand prediction and preparation\n\n🔄 Infrastructure Planning:\n• Equipment relationship and dependency mapping\n• Optimization of upgrade schedules\n• Renewable energy integration planning",
+                manufacturing: "MANUFACTURING EXCELLENCE:\n\n🔧 Predictive Maintenance:\n• Equipment relationship and failure pattern analysis\n• Predictive failure modeling\n• Optimal maintenance scheduling\n\n📊 Quality Control:\n• Process correlation with quality outcomes\n• Real-time quality monitoring\n• Defect pattern recognition and prevention\n\n⚙️ Production Optimization:\n• Line efficiency and bottleneck analysis\n• Supply chain integration optimization\n• Resource allocation and scheduling",
+                telecom: "TELECOMMUNICATIONS OPTIMIZATION:\n\n📡 Network Performance:\n• Real-time network relationship monitoring\n• Traffic pattern analysis and optimization\n• Predictive capacity planning\n\n👥 Customer Experience:\n• Service quality correlation with customer satisfaction\n• Churn prediction and prevention\n• Personalized service optimization\n\n🔧 Infrastructure Investment:\n• Network upgrade impact analysis\n• ROI optimization for infrastructure projects\n• Technology adoption pattern analysis",
+                logistics: "LOGISTICS & TRANSPORTATION INTELLIGENCE:\n\n🚛 Fleet Management:\n• Vehicle performance and maintenance tracking\n• Driver behavior analysis and optimization\n• Fuel efficiency pattern recognition\n\n📍 Route Optimization:\n• Dynamic routing based on real-time conditions\n• Historical traffic pattern analysis\n• Delivery time prediction and optimization\n\n📦 Warehouse Operations:\n• Inventory flow and bottleneck analysis\n• Pick-and-pack efficiency optimization\n• Cross-docking opportunity identification\n\n🌐 Global Supply Network:\n• Multi-modal transportation optimization\n• Carrier performance relationship tracking\n• Customs and regulatory compliance monitoring\n\n📊 Demand Forecasting:\n• Seasonal shipping pattern analysis\n• Customer demand relationship mapping\n• Capacity planning and resource allocation",
+                hr: "HUMAN RESOURCES TRANSFORMATION:\n\n👥 Talent Analytics:\n• Employee performance pattern analysis\n• Career progression path optimization\n• Skills gap identification and planning\n\n💼 Retention Intelligence:\n• Early warning system for employee turnover\n• Relationship mapping of team dynamics\n• Exit interview pattern analysis\n\n🎯 Recruitment Optimization:\n• Candidate journey tracking and optimization\n• Source effectiveness analysis\n• Time-to-hire pattern recognition\n\n📈 Performance Management:\n• Goal achievement pattern analysis\n• Peer relationship impact on performance\n• Training effectiveness measurement\n\n🏢 Organizational Health:\n• Communication network analysis\n• Cultural change impact measurement\n• Leadership influence pattern tracking\n\n💰 Compensation Intelligence:\n• Pay equity analysis over time\n• Market rate evolution tracking\n• Retention correlation with compensation"
+            };
+
+            const useCase = useCases[industry];
+            alert(useCase);
+        }
+
+        // Initialize the network background
+        createNetworkBackground();
+
+        // Add scroll-triggered animations
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.floating-elements');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+    </script>
+</body>
+</html>
