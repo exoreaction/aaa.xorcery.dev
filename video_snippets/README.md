@@ -27,30 +27,30 @@ This directory contains video content and supporting materials showcasing the Xo
 
 ## 🎯 Key Platform Components Covered
 
-1. **Alchemy** - Data Connection Engine
+1. **Xorcery Alchemy** - Data Connection Engine
     - Seamless connectivity for live streams and stored datasets
     - Configurable pipelines with YAML/JSON configuration
     - Real-time processing and monitoring capabilities
 
-2. **Aurora** - Temporal Event Store
+2. **Xorcery Aurora** - Temporal Event Store
     - Acts as the memory of the platform
     - Captures every event and change over time
     - Enables full historical reconstruction and analysis
 
-3. **Astral** - Visualization Layer
+3. **Xorcery Astral** - Visualization Layer
     - Intuitive visualization and exploration tools
     - Designed for analysts and decision-makers
     - Brings data and relationships directly understandable
 
 ## 🔗 Additional Resources
 
-- **Main Repository**: [Xorcery](https://github.com/Cantara/xorcery)
-- **Alchemy Repository**: [Xorcery Alchemy](https://github.com/exoreaction/xorcery-alchemy)
+- **Xorcery Repository**: [Xorcery](https://github.com/Cantara/xorcery)
+- **Xorcery Alchemy Repository**: [Xorcery Alchemy](https://github.com/exoreaction/xorcery-alchemy)
 - **Company Website**: [Exoreaction](https://www.exoreaction.com)
 - **Platform Landing**: [xorcery.dev](https://xorcery.dev)
 
 ## 🏢 About
 
-These videos are created by **Exoreaction**, showcasing the capabilities of the Xorcery AAA platform for organizations looking to connect, store, and visualize data with speed, transparency, and security.
+These videos are created by **eXOReaction**, showcasing the capabilities of the Xorcery AAA platform for organizations looking to connect, store, and visualize data with speed, transparency, and security.
 
 For more information, visit [exoreaction.com](http://exoreaction.com).
