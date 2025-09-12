@@ -1,6 +1,6 @@
 # Video Snippets - Xorcery AAA Platform
 
-This directory contains video content and supporting materials showcasing the Xorcery AAA (Authentication, Authorization, and Auditing) platform - a next-generation data infrastructure designed for temporal intelligence and advanced analytics.
+This directory contains video content and supporting materials showcasing the Xorcery AAA (Alchemy, Aurora, and Astral) platform - a next-generation data infrastructure designed for temporal intelligence and advanced analytics.
 
 ## 📹 Video Content Overview
 
