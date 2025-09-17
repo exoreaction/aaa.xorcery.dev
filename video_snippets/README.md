@@ -2,6 +2,8 @@
 
 This directory contains video content and supporting materials showcasing the Xorcery AAA (Alchemy, Aurora, and Astral) platform - a next-generation data infrastructure designed for temporal intelligence and advanced analytics.
 
+YouTube channel: https://www.youtube.com/@exoreaction2602
+
 ## 📹 Video Content Overview
 
 ### Platform Overview Videos
