@@ -2,6 +2,9 @@
 
 This directory contains video content and supporting materials showcasing the Xorcery AAA (Alchemy, Aurora, and Astral) platform - a next-generation data infrastructure designed for temporal intelligence and advanced analytics.
 
+Analytics Technology Evolution:  https://claude.ai/public/artifacts/d13950b2-b944-4a3a-9c80-f2e0c0516364 (From data warehouses to temporal intelligence - how advancing technology capabilities enable new levels of analytical maturity)
+
+
 YouTube channel: https://www.youtube.com/@exoreaction2602
 
 ## 📹 Video Content Overview
