@@ -51,7 +51,7 @@ YouTube channel: https://www.youtube.com/@exoreaction2602
 
 - **Xorcery Repository**: [Xorcery](https://github.com/Cantara/xorcery)
 - **Xorcery Alchemy Repository**: [Xorcery Alchemy](https://github.com/exoreaction/xorcery-alchemy)
-- **Company Website**: [Exoreaction](https://www.exoreaction.com)
+- **Company Website**: [eXOReaction](https://www.exoreaction.com)
 - **Platform Landing**: [xorcery.dev](https://xorcery.dev)
 
 ## 🏢 About
