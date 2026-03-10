@@ -1,0 +1,22 @@
+id: aaa-poc-xorcery-dev
+name: "AAA POC Xorcery Dev (Aurora Data Generator)"
+version: "1.0.0-SNAPSHOT"
+description: "Proof-of-concept data generator for Aurora POC scenarios, producing realistic event streams for testing the Xorcery AAA analytics platform."
+units:
+  - id: data-generator
+    name: "Event Data Generator"
+    type: tool
+    description: "Generates realistic event data for Aurora POC scenarios including employee events, organisational changes, and HR workflows."
+    path: src/main/java/com/aurorapoc
+
+  - id: scenarios
+    name: "POC Scenarios"
+    type: test
+    description: "Scenario definitions and configuration for different Aurora POC demonstration cases."
+    path: src/main/resources
+
+  - id: build
+    name: "Build Configuration"
+    type: config
+    description: "Maven build configuration targeting Java 17 with Jackson and SLF4J/Logback dependencies."
+    path: pom.xml
